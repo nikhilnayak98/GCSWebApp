@@ -346,6 +346,20 @@ function showSection(sectionElement, buttonElement) {
   }
 }
 
+function getAllActiveUsers() {
+  var ref = firebase.database().ref().child('users');
+  ref.on("value", function(snapshot) {
+    var key = Object.keys(snapshot.val());
+    var size = Object.keys(key).length;
+    var i;
+    for (i = 0; i < size; i++) { 
+      console.log(snapshot.child(key[i]).val().email);
+      }
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+  });
+}
+
 /**
  * Creates new user
  */
