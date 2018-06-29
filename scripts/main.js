@@ -4,6 +4,7 @@ var messageForm = document.getElementById('message-form');
 var messageInput = document.getElementById('new-post-message');
 var titleInput = document.getElementById('new-post-title');
 var signInCustomButton = document.getElementById('sign-in-custom-button');
+var signInGoogleButton = document.getElementById('sign-in-google-button');
 var signUpButton = document.getElementById('sign-up-button');
 var resetPasswordButton = document.getElementById('reset-password-button');
 var signOutButton = document.getElementById('sign-out-button');
@@ -445,6 +446,11 @@ window.addEventListener('load', function() {
       }
       console.log(error);
     });
+  });
+
+  signInGoogleButton.addEventListener('click', function() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
   });
 
   signUpButton.addEventListener('click', function() {
